@@ -1,0 +1,136 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<%@ Register TagPrefix="ucontrol" TagName="FileList" Src="~/lib/Controls/DisplayFiles.ascx" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head id="Head1" runat="server">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>escWorks</title>
+    <link type="text/css" rel="stylesheet" href="~/lib/css/escWorksStyle.css" />
+    <script src='https://www.google.com/recaptcha/api.js' type="text/javascript" async
+        defer></script>
+</head>
+<body style="width: 100%">
+    <form runat="server" class="mainBody">
+    <asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true" runat="server">
+    </asp:ScriptManager>
+    <table align="center">
+        <tr valign="top">
+            <td>
+                <table style="margin-left: auto; width: 1024px; margin-right: auto; margin-top: 20px;
+                    border-collapse: collapse; border-right: #325e8e 1px solid; border-top: #325e8e 1px solid;
+                    border-left: #325e8e 1px solid; border-bottom: #325e8e 1px solid;">
+                    <tr>
+                        <td colspan="3" style="padding-right: 0px; padding-left: 0px; padding-bottom: 0px;
+                            padding-top: 0px; background-color: #325e8e;">
+                            <div>
+                                <a title="ESC 5" href="http://www.esc5.net">
+                                    <img src="<%# BasePage.PathToRoot %>lib/standard/img/r5Banner.jpg" alt="escWorks"
+                                        width="100%" style="background-color: #325e8e; border: none;" /></a></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 1px; background-color: #FFFFFF; padding: 0px;">
+                            <img src="<%# BasePage.PathToRoot %>lib/standard/img/trans.gif" alt="spacer" width="1px"
+                                height="1px" />
+                        </td>
+                    </tr>
+                    <tr style="vertical-align: top;">
+                        <td style="width: 200px; padding: 10px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="200px" style="background-color: #325e8e;">
+                                <tr>
+                                    <td>
+                                        <br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="100%" style="padding: 10px;">
+                                        <h2>
+                                            <font color="#ffffff">Quick</font><font color="#FFFFFF">Links</font></h2>
+                                        <br />
+                                        <br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="100%" style="background-color: #325e8e;">
+                                        <escWorks:MenuV2 runat="server" ID="menu2" DisplayAllItems="true" DisplayCreateNewLink="true" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #325e8e;">
+                                        <br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="mlabel">
+                                        PDF Downloads
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <ucontrol:FileList ID="flList" runat="server" />
+                                    </td>
+                                </tr>
+                                    <tr><td>
+                            <br>
+                            </td></tr>
+
+                            <tr>
+                                <td>
+                                   &nbsp; &nbsp; <script type="text/javascript" src="https://sealserver.trustwave.com/seal.js?code=7784106a0ca511e0b34b005056b201e5"></script>
+                                </td>
+                            </tr>
+                            </table>
+                        </td>
+                        <td style="width: 1px; background-color: #FFFFFF; padding: 3px;">
+                        </td>
+                        <td style="height: 100%; vertical-align: top; padding-right: 10px;">
+                            <div style="background-color: #ffffff; width: 804px">
+                                <div class="mainBody">
+                                    <escWorks:PageTitle runat="server" ID="pageTitle" BackColor="#FFFFFF" />
+                                    <br />
+                                    <asp:ContentPlaceHolder runat="server" ID="mainBody" />
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 1px; background-color: #FFFFFF; padding: 0px;">
+                            <img src="<%# BasePage.PathToRoot %>lib/standard/img/trans.gif" alt="spacer" width="1px"
+                                height="1px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="background-color: #325e8e;">
+                            <div style="padding: 5px;" align="center">
+                                <h4>
+                                    <font color="#FFFFFF">350 Pine Street Suite 500 Beaumont, TX 77701 | Phone: 409-951-1700
+                                        <br />
+                                        <a href="http://goo.gl/maps/eU62c" style="text-decoration: none;"><font color="FFFFFF">
+                                            Maps</font></a> | <a href="http://www.google.com" style="text-decoration: none;"><font
+                                                color="FFFFFF">Restaurants</font></a> | <a href="https://txr5.escworks.net/lib/docs/Directions to Region 5 ESC.pdf"
+                                                    style="text-decoration: none;"><font color="FFFFFF">Directions</font></a>
+                                        | <a href="https://txr5.escworks.net/lib/docs/Region 5 Parking.pdf" style="text-decoration: none;">
+                                            <font color="FFFFFF">Parking Map</font></a></font></h4>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div style="padding: 5px;" align="center">
+                    <a title="escWorks.NET" href="http://www.escworks.com">
+                        <img src="<%# BasePage.PathToRoot %>lib/standard/img/escWorks_LOGO_PoweredBy.jpg"
+                            alt="Powered by escWorks Logo" border="0" /></a>
+                </div>
+                <asp:Label runat="server" ID="lblStagingServer" CssClass="error" Text="" />
+                <br />
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>

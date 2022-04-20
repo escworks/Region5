@@ -1,0 +1,93 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+using Csla;
+using Csla.Security;
+using Csla.Data;
+using System.Data.SqlClient;
+using System.Data;
+using System.Linq;
+
+namespace tx_esc_04.BusinessObect.Accountability
+{
+    [Serializable()]
+    public class Sites : BusinessListBase<Sites, Site>
+    {
+        #region Business Methods
+
+        public bool AddNew(string siteName)
+        {
+            Site item = Site.NewSite();
+            item.ObjId = ((Site)this.Parent).ObjId;
+            item.SiteId = ((Site)this.Parent).SiteId;
+            item.SiteName = siteName;
+            this.Add(item);
+
+            return true;
+        }
+
+        #endregion
+
+        #region Factory Methods
+
+        private Sites()
+        { /* require use of factory methods */ }
+
+        internal static Sites NewSites()
+        {
+            return DataPortal.CreateChild<Sites>();
+        }
+
+        public static Sites GetSites(int obj_id)
+        {
+            return DataPortal.FetchChild<Sites>(obj_id);
+        }
+
+        #endregion
+
+
+        #region Data Access
+
+        protected override void Child_Create()
+        {
+            //
+        }
+
+        public bool AddNew(Site s)
+        {
+            this.Add(s);
+
+            return true;
+        }
+
+        private void Child_Fetch(int obj_id)
+        {
+            this.RaiseListChangedEvents = false;
+            using (SqlConnection cn = region4.Common.DataConnection.DbConnection)
+            {
+                cn.Open();
+                using (SqlCommand cm = cn.CreateCommand())
+                {
+                    cm.CommandType = CommandType.StoredProcedure;
+                    cm.CommandText = "ItsSitesGet";
+                    cm.Parameters.AddWithValue("@obj_id", obj_id);
+
+                    SafeDataReader dr = new SafeDataReader(cm.ExecuteReader());
+                    while (dr.Read())
+                    {
+                        this.Add(Site.GetSite(dr));
+                    }
+                }
+            }
+            this.RaiseListChangedEvents = true;
+        }
+
+        protected override void DataPortal_Update()
+        {
+            base.Child_Update(this);
+        }
+        #endregion
+
+    }
+}

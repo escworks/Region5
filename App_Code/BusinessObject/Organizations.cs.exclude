@@ -1,0 +1,93 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+using Csla;
+using Csla.Security;
+using Csla.Data;
+using System.Data.SqlClient;
+using System.Data;
+using System.Linq;
+
+namespace tx_esc_04.BusinessObect.Accountability
+{
+    [Serializable()]
+    public class Organizations : BusinessListBase<Organizations, Organization>
+    {
+        #region Business Methods
+
+        public bool AddNew(string organizationName)
+        {
+            Organization item = Organization.NewOrganization();
+            item.ObjId = ((Organization)this.Parent).ObjId;
+            item.OrgId = ((Organization)this.Parent).OrgId;
+            item.OrganizationName= organizationName;
+            this.Add(item);
+
+            return true;
+        }
+
+        #endregion
+
+        #region Factory Methods
+
+        private Organizations()
+        { /* require use of factory methods */ }
+
+        internal static Organizations NewOrganizations()
+        {
+            return DataPortal.CreateChild<Organizations>();
+        }
+
+        public static Organizations GetOrganizations(int obj_id)
+        {
+            return DataPortal.FetchChild<Organizations>(obj_id);
+        }
+
+        #endregion
+
+
+        #region Data Access
+
+        protected override void Child_Create()
+        {
+            //
+        }
+
+        public bool AddNew(Organization o)
+        {
+            this.Add(o);
+
+            return true;
+        }
+
+        private void Child_Fetch(int obj_id)
+        {
+            this.RaiseListChangedEvents = false;
+            using (SqlConnection cn = region4.Common.DataConnection.DbConnection)
+            {
+                cn.Open();
+                using (SqlCommand cm = cn.CreateCommand())
+                {
+                    cm.CommandType = CommandType.StoredProcedure;
+                    cm.CommandText = "ItsOrganizationsGet";
+                    cm.Parameters.AddWithValue("@obj_id", obj_id);
+
+                    SafeDataReader dr = new SafeDataReader(cm.ExecuteReader());
+                    while (dr.Read())
+                    {
+                        this.Add(Organization.GetOrganization(dr));
+                    }
+                }
+            }
+            this.RaiseListChangedEvents = true;
+        }
+
+        protected override void DataPortal_Update()
+        {
+            base.Child_Update(this);
+        }
+        #endregion
+
+    }
+}
