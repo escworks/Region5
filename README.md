@@ -12,3 +12,25 @@ escWorks® is a solution designed on a modern, extensible platform that enables 
 > * Enter all information.
 > * Click the Save Record button to create the new account
 > * This information can be viewed and updated at any time by clicking the My Account link in the User Account Information section
+2. Password and Account Maintenance
+ >**Resetting a Password**
+   >> If a participant has an account in the system, but cannot remember their password, they can use the Forgot Password link to reset their *password*.
+   >> The Forgotten password link is located on the Account Sign In page. 
+   >> * 	Select *“click here”* next to:  If you have forgotten your password, The Password Management screen opens.
+   >> * 	Enter the email address for the account and click *Send*
+   >> *  An email containing information on resetting the password is sent to the email address provided   Note: this email is sent from [messenger@esclive.net](mailto:admin@cloudhadoop.com)
+ 
+ >**Changing a Password**
+  >> If a participant already has an account in the system, and knows their current their password, they can use the Change password link to set a new password for their account or the Change primary email address link to change the email address associated with their account. 
+  
+  >> To change a current password:
+  >> * Click the *sign In* button
+  >> * Enter the email address and password in the correct fields
+  >> * Once logged in, select the My Account link from the main menu bar
+  >> * Click on the Change Password link at the top of the page  
+The Change Password window opens:
+  >>>>* Enter the email address assigned to the account in the Email Address field
+  >>>>* Enter the email address and password in the correct fields
+
+ 
+ 
